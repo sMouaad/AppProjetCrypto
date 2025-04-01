@@ -1,44 +1,58 @@
-<h2>Inscription</h2>
+<div class="flex flex-col w-full items-center">
+  <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8">
+    <h2 class="font-bold text-center text-2xl">Inscription</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field flex flex-col">
+        <%= f.label :name, "Nom" %><br />
+        <%= f.text_field :name, class: "border h-8 rounded-sm border-gray-400 bg-gray-100"%>
+      </div>
+  <div class="field flex flex-col">
+        <%= f.label :role %>
+        <div class="flex gap-2">
+          <%= f.radio_button :role, "patient" %>
+          <%= f.label :role_patient, "Patient" %>
+        </div>
+        <div class="flex gap-2">
+          <%= f.radio_button :role, "medecin" %>
+          <%= f.label :role_medecin, "Médecin" %>
+        </div>
+        <div class="flex gap-2">
+          <%= f.radio_button :role, "radiologue" %>
+          <%= f.label :role_radiologue, "Radiologue" %>
+        </div>
+        <div class="flex gap-2">
+          <%= f.radio_button :role, "laborantin" %>
+          <%= f.label :role_radiologue, "Laborantin" %>
+        </div>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :name, "Nom" %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.radio_button :role, "patient" %>
-    <%= f.label :role_patient, "Patient" %>
-    <%= f.radio_button :role, "medecin" %>
-    <%= f.label :role_medecin, "Médecin" %>
-    <%= f.radio_button :role, "radiologue" %>
-    <%= f.label :role_radiologue, "Radiologue" %>
-    <%= f.radio_button :role, "laborantin" %>
-    <%= f.label :role_radiologue, "Laborantin" %>
-  </div>
+      <div class="field flex flex-col">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border h-8 rounded-sm border-gray-400 bg-gray-100"%>
+      </div>
   
-  <div class="field">
-    <%= f.label :password, "Mot de passe" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      
+      <div class="field flex flex-col">
+        <%= f.label :password, "Mot de passe" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "border h-8 rounded-sm border-gray-400 bg-gray-100"%>
+      </div>
+  
+      <div class="field flex flex-col">
+        <%= f.label :password_confirmation, "Confirmation du mot de passe" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "border h-8 rounded-sm border-gray-400 bg-gray-100"%>
+      </div>
+  
+      <div class="actions bg-[#21ba9f] text-white font-bold flex items-center justify-center rounded-md mt-8 min-h-8">
+        <%= f.submit "S'inscrire", class:"flex-1" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation du mot de passe" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="text-center mt-2"><%= render "devise/shared/links" %></div>
+    <% end %>
+  
+    
   </div>
-
-  <div class="actions">
-    <%= f.submit "S'inscrire" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

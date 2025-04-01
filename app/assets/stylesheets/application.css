@@ -8,3 +8,14 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ @font-face {
+   font-family: 'nunito';
+   font-style: normal;
+   font-weight: 400;
+   src: url('/assets/fonts/nunito.ttf')
+ }
+ 
+ * {
+    font-family: 'nunito', sans-serif;
+ }
