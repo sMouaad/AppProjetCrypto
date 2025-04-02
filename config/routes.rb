@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
+  get "homepage/index"
   resources :medical_records
   devise_for :users, controllers: { registrations: "users/registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,4 +15,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  authenticated do
+    root "dashboard#index", as: :authenticated_root
+  end
+
+  unauthenticated do
+    root "homepage#index", as: :unauthenticated_root
+  end
 end

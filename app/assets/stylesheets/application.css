@@ -19,3 +19,7 @@
  * {
     font-family: 'nunito', sans-serif;
  }
+
+ form:has(.inline-button){
+    display:inline-block;
+ }

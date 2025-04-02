@@ -1,0 +1,36 @@
+
+<div class="bg-[#21ba9f] w-full absolute top-0 h-22 z-80"></div>
+<nav class="z-90 dark opacity-90  min-h-30 flex flex-col fixed w-full top-0 start-0">
+  <div class="bg-[#21ba9f]">
+    <div class="flex max-w-full flex-wrap items-center gap-8 justify-between py-4 px-8">
+      <a href="/" class="flex justify-center lg:justify-start items-center space-x-3 rtl:space-x-reverse">
+          <span class="self-center hidden md:block text-2xl font-semibold whitespace-nowrap dark:text-white">CryptoMedical</span>
+      </a>
+      <div class="flex-1"></div>
+      <div class="flex justify-center gap-4 flex-1 sm:flex-none  md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <%=button_to "Se connecter", new_user_session_path , method: :get, class:"hover:cursor-pointer whitespace-nowrap rounded-full bg-teal-600 px-4 text-white font-bold h-12 h-min-12 transition-all border-2 border-teal-800 ease-linear duration-300"%>
+          <%= button_to "S'inscrire", new_user_registration_path, method: :get, class:"hover:cursor-pointer whitespace-nowrap rounded-full bg-teal-600 px-4 text-white font-bold h-12 h-min-12 transition-all border-2 border-teal-800 ease-linear duration-300"%>
+      </div>
+    </div>
+  </div>
+  <div class="h-2 bg-teal-800 opacity-60"></div>
+</nav>
+<div class="absolute h-screen w-screen top-0">
+  <div class="relative flex items-center justify-center z-10 flex-col h-full w-full">
+    <div class="text-xl font-bold">Bienvenue dans CryptoMedical! Ici vous aurez la possilibité de </div>
+    <ul class="list-disc flex-col flex">
+      <li>
+        this
+      </li>
+      <li>
+        that, MOHIM ON EXPLIQUE NOTRE PROJET ICI!
+      </li>
+    </ul>
+    <div class="mt-4">
+      Commencez par vous connecter en cliquant sur ce <span><%= button_to "Bouton", new_user_registration_path, method: :get, class:"inline-button hover:cursor-pointer whitespace-nowrap rounded-full bg-teal-600 px-4 text-white font-bold h-10 h-min-10 transition-all border-2 border-teal-800 ease-linear duration-300"%></span> pour s'inscire
+    </div>
+  </div>
+  <footer class="bg-[#21ba9f] text-white flex justify-center items-center h-16 ">
+    Copyright © CryptoMedical 2025
+  </footer>
+</div>
