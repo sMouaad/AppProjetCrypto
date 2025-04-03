@@ -1,0 +1,9 @@
+<% content_for :title, "New message" %>
+
+<%= turbo_frame_tag "new_message", target:"_top" do%>
+  <div class="md:w-2/3 w-full">
+  
+    <%= render "form", message: @message %>
+  
+  </div>
+<% end %>

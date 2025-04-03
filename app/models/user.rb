@@ -12,4 +12,5 @@ class User < ApplicationRecord
   end
 
   has_many :medical_records
+  has_many :messages
 end

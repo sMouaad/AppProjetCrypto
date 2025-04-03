@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages, only: %i[index new create]
   get "dashboard/index"
   get "homepage/index"
   resources :medical_records

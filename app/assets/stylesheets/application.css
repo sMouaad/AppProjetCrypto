@@ -23,3 +23,12 @@
  form:has(.inline-button){
     display:inline-block;
  }
+
+ #messages *{
+   overflow-anchor: none;
+ }
+
+ #anchor {
+   overflow-anchor: auto;
+   height: 1px;
+ }

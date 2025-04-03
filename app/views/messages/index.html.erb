@@ -1,0 +1,28 @@
+<% content_for :title, "Messages" %>
+
+<div class="w-full p-4">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="font-bold text-4xl">Messages</h1>
+  </div>
+
+  <div id="message" class="min-w-full bg-white rounded-lg border h-100 overflow-auto space-y-5">
+    <div id="messages">
+      <% if @messages.any? %>
+        <% @messages.each do |message| %>
+            <%= render message %>
+        <% end %>
+      <% else %>
+        <p class="text-center my-10">No messages found.</p>
+      <% end %>
+    </div>
+    <div id="anchor"></div>
+  </div>
+
+  <div>
+    <%= turbo_frame_tag "new_message", src: new_message_path, target: "_top"%>
+  </div>
+</div>
