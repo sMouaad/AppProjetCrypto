@@ -4,8 +4,10 @@
   <p class="text-gray-700">Here you can manage your medical records and messages.</p>
   <p class="text-gray-700">Use the links below to navigate:</p>
   <%=link_to "Show Medical Records", medical_records_path, class:"underline text-teal-500"%>
-  <%=link_to "Show Messages", messages_path, class:"underline text-teal-500"%>
+  <%=link_to "Show Conversations", users_path, class:"underline text-teal-500"%>
   <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "underline text-teal-500" do %>
     Logout
   <% end %>
+
+  <%= turbo_frame_tag "users", src: users_path, target: "_top"%>
 </div>

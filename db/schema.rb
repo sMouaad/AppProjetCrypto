@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_03_210849) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_04_095831) do
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "medical_records", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -23,9 +30,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_210849) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "conversation_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -44,5 +53,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_210849) do
   end
 
   add_foreign_key "medical_records", "users"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end

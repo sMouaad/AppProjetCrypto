@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :messages, only: %i[index new create]
+  get "users", to: "users#index"
+  resources :conversations, only: [ :index, :show, :create ] do
+    resources :messages, only: [ :create ]
+  end
   get "dashboard/index"
   get "homepage/index"
   resources :medical_records

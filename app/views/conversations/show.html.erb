@@ -1,0 +1,12 @@
+<h1>Chat</h1>
+<ul>
+  <% @messages.each do |message| %>
+    <li><strong><%= message.user.email %>:</strong> <%= message.content %></li>
+  <% end %>
+</ul>
+
+<%= form_with model: [@conversation, Message.new], local: true do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit "Send" %>
+<% end %>
+<%= link_to "Back to Conversations", conversations_path %>

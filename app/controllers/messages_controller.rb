@@ -1,35 +1,32 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  # GET /messages or /messages.json
-  def index
-    @messages = Message.all
-  end
+  before_action :set_conversation
 
-  # GET /messages/new
-  def new
-    @message = Message.new
-  end
-
-
-  # POST /messages or /messages.json
   def create
-    @message = current_user.messages.build(message_params)
+    # Find or create the conversation
+    conversation = Conversation.find_or_create_by(
+      sender_id: [ current_user.id, params[:receiver_id] ].min,
+      receiver_id: [ current_user.id, params[:receiver_id] ].max
+    )
 
-    respond_to do |format|
-      if @message.save
-        format.turbo_stream
-        format.html { redirect_to messages_path }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    # Create and send message
+    message = conversation.messages.new(user: current_user, content: params[:message][:content])
+
+    if message.save
+      redirect_to conversation_path(conversation)
+    else
+      flash[:alert] = "Message cannot be empty"
+      redirect_to conversation_path(conversation)
     end
   end
 
   private
 
-    # Only allow a list of trusted parameters through.
-    def message_params
-      params.expect(message: [ :content ])
-    end
+  def set_conversation
+    @conversation = Conversation.find(params[:conversation_id])
+  end
+
+  def message_params
+    params.require(:message).permit(:content)
+  end
 end
