@@ -31,8 +31,7 @@ registry:
   username: grreatest
 
   # Always use an access token rather than real password when possible.
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+  password: dockercityofelements
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
@@ -81,7 +80,8 @@ builder:
   arch: arm64
 
   # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
-  # remote: ssh://docker@docker-builder-server
+  remote: ssh://ubuntu@158.178.205.39
+  local: false
   #
   # # Pass arguments and secrets to the Docker build process
   # args:
