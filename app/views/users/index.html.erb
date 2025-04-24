@@ -10,7 +10,7 @@
             <% if user.role == "patient" %>
               <%= link_to "Show Medical Records", medical_records_path, class:"underline text-teal-500"%>
             <% end %>
-            <%= link_to "Chat", conversations_path(receiver_id: user.id), method: :post, class: "btn btn-primary" %>
+            <%= button_to "Chat", conversations_path(receiver_id: user.id), method: :post, class: "underline text-teal-500 btn-primary" %>
           </div>
         </div>
       <%end%>
